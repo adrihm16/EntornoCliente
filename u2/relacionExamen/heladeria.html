@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  </head>
+  <body>
+    <script>
+      let nombre = prompt("Nombre del cliente");
+      let sabor = prompt("Sabor de helado");
+      let tamaño = prompt("Tamaño");
+      let precioSabor = 0;
+      let precioTamaño = 0;
+      if (sabor == "vainilla") {
+        precioSabor = 2;
+      } else if (sabor == "chocolate") {
+        precioSabor = 2.3;
+      } else if (sabor == "fresa") {
+        precioSabor = 2.5;
+      } else if (sabor == "menta") {
+        precioSabor = 2.8;
+      }
+
+      if (tamaño == "pequeño") {
+        precioTamaño = 1;
+      } else if (tamaño == "mediano") {
+        precioTamaño = 1.5;
+      } else if (tamaño == "grande") {
+        precioTamaño = 2;
+      }
+      let precio = precioSabor * precioTamaño;
+      if (precio == 0) {
+        if (precioTamaño == 0) {
+          precio = "Tamaño no válido";
+        } else {
+          precio = "Sabor no válido";
+        }
+      }
+
+      let ticket =
+        "Nombre: " +
+        nombre +
+        "\nSabor: " +
+        sabor +
+        "\nTamaño: " +
+        tamaño +
+        "\nPrecio: " +
+        precio;
+
+      console.log(ticket);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>calculadora</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  </head>
+  <body>
+    <script>
+      let listanotas = [];
+      for (let i = 0; i < 5; i++) {
+        let nota = Number(prompt("Introduce La Nota"));
+        listanotas.push(nota);
+      }
+      let media =
+        (listanotas.reduce((acc, actual) => acc + actual, 0)) / listanotas.length;
+      let max = Math.max(...listanotas);
+      let min = Math.min(...listanotas);
+      if (media < 5) {
+        console.log("Suspenso");
+      } else if (media >= 5 && media < 7) {
+        console.log("Aprobado");
+      } else if (media >= 7 && media < 9) {
+        console.log("Notable");
+      } else {
+        console.log("Sobresaliente");
+      }
+      console.log(
+        "media: " + media + 
+        "\nnota Máxima: " + max + 
+        "\nNota mínima: " + min
+      );
+    </script>
+  </body>
+</html>

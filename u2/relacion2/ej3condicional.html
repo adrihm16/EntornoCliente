@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Condicional 3 - Descuento</title>
+</head>
+<body>
+  <script>
+    let total = prompt("Total compra:");
+    let descuento;
+    switch (true) {
+      case total >= 100: descuento = 20; break;
+      case total >= 50: descuento = 10; break;
+      case total >= 20: descuento = 5; break;
+      default: descuento = 0;
+    }
+    alert(`Descuento: ${descuento}%`);
+  </script>
+</body>
+</html>

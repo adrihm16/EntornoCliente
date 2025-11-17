@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5 - Inventario con SWITCH</title>
+</head>
+
+<body>
+    <script>
+        let productos = [
+            { nombre: "Laptop", precio: 1200, stock: 5 },
+            { nombre: "Ratón", precio: 25, stock: 50 },
+            { nombre: "Teclado", precio: 80, stock: 30 },
+            { nombre: "Monitor", precio: 350, stock: 15 }
+        ];
+
+        while (true) {
+            let opcion = prompt(`=== MENÚ INVENTARIO ===
+1 → Ver todos los productos
+2 → Buscar producto por nombre
+3 → Valor total del stock
+4 → Añadir nuevo producto
+5 → Salir
+
+Elige una opción (1-5):`);
+
+            switch (opcion) {
+                case "1":   // Ver todos los productos
+                    console.log("--- Lista de productos ---");
+                    productos.forEach(p => {
+                        console.log(`${p.nombre} → Precio: ${p.precio}€ → Stock: ${p.stock} unidades`);
+                    });
+                    break;
+
+                case "2":   // Buscar producto
+                    let busqueda = prompt("Nombre del producto a buscar:");
+                    if (busqueda) {
+                        let encontrado = productos.find(p =>
+                            p.nombre.toLowerCase() === busqueda.trim().toLowerCase()
+                        );
+                        if (encontrado) {
+                            console.log("Producto encontrado:", encontrado);
+                        } else {
+                            console.log("Producto NO encontrado");
+                        }
+                    }
+                    break;
+
+                case "3":   // Valor total del stock
+                    let valorTotal = productos.reduce((suma, p) => suma + (p.precio * p.stock), 0);
+                    console.log(`Valor total del inventario: ${valorTotal}€`);
+                    break;
+
+                case "4":   // Añadir nuevo producto
+                    let nuevoNombre = prompt("Nombre del nuevo producto:");
+                    let nuevoPrecio = Number(prompt("Precio:"));
+                    let nuevoStock = Number(prompt("Stock:"));
+
+                    if (nuevoNombre && !isNaN(nuevoPrecio) && !isNaN(nuevoStock)) {
+                        productos.push({
+                            nombre: nuevoNombre,
+                            precio: nuevoPrecio,
+                            stock: nuevoStock
+                        });
+                        console.log("¡Producto añadido correctamente!");
+                        console.log(productos[productos.length - 1]);
+                    } else {
+                        console.log("Datos inválidos. Producto no añadido.");
+                    }
+                    break;
+
+                case "5":   // Salir
+                    console.log("¡Gracias por usar el gestor de inventario!");
+                    break;
+
+                default:
+                    console.log("Opción no válida. Elige del 1 al 5.");
+            }
+
+            // Si elegimos salir, terminamos el bucle
+            if (opcion === "5") break;
+
+
+            console.log("------------------------------------------------");
+        }
+    </script>
+</body>
+
+</html>

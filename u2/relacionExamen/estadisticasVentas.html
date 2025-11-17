@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+
+<body>
+    <script>
+        console.log("\n=== 9. ESTADÍSTICAS DE VENTAS ===");
+        let ventas = [120, 340, 560, 80, 230, 600, 400];
+
+        let total = ventas.reduce((a, b) => a + b, 0);
+        let promedio = total / ventas.length;
+        let max = Math.max(...ventas);
+        let min = Math.min(...ventas);
+        let superan300 = ventas.filter(v => v > 300).length;
+
+        console.log("Total ventas:", total + "€");
+        console.log("Promedio:", promedio.toFixed(2) + "€");
+        console.log("Venta máxima:", max + "€");
+        console.log("Venta mínima:", min + "€");
+        console.log("Ventas > 300€:", superan300);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizador texto</title>
+</head>
+
+<body>
+    <script>
+        let frase = prompt("Escribe una frase");
+        frase = frase.trim();
+        let arrayFrase = frase.split(" ");
+        let numPalabras = arrayFrase.length;
+        console.log("Número de palabras: " + numPalabras);
+        console.log("Frase en minúsculas: " + frase.toLowerCase());
+        console.log("frase en mayúsculas: " + frase.toUpperCase());
+        console.log("Contiene la palabra javascript?  " + frase.toLowerCase().includes("javascript"));
+    </script>
+</body>
+
+</html>

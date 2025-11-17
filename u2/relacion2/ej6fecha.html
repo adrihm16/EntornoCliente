@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Fecha 6 - Edad</title>
+</head>
+<body>
+  <script>
+    let nacimiento = prompt("Fecha nacimiento (YYYY-MM-DD):");
+    let hoy = new Date();
+    let birth = new Date(nacimiento);
+    let edad = hoy.getFullYear() - birth.getFullYear();
+    if (hoy < new Date(hoy.getFullYear(), birth.getMonth(), birth.getDate())) edad--;
+    alert("Edad: " + edad);
+  </script>
+</body>
+</html>

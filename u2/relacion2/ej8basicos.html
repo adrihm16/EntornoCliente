@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Actividad 8 - Letra DNI</title>
+</head>
+<body>
+  <script>
+    let letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+    let dni = prompt("DNI (8 dígitos):");
+    let letra = prompt("Letra:");
+    let calc = letras[dni % 23];
+    alert(calc === letra.toUpperCase() ? "Correcta" : "Incorrecta");
+  </script>
+</body>
+</html>

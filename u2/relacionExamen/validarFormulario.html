@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log("\n=== 14. VALIDADOR FORMULARIO ===");
+        let nombre = prompt("Nombre:");
+        let email = prompt("Email:");
+        let mensaje = prompt("Mensaje:");
+
+        if (nombre.length <= 2) console.log("Error: nombre demasiado corto");
+        else if (!email.includes("@") || !email.includes(".")) console.log("Error: email inválido");
+        else if (mensaje.trim() === "") console.log("Error: mensaje vacío");
+        else console.log("Formulario enviado correctamente");
+
+    </script>
+</body>
+
+</html>

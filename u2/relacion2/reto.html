@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestor de Usuarios</title>
+</head>
+<body>
+  <div id="output"></div>
+  <script>
+    const usuarios = [];
+    //añado los usuarios y calclo la edad y si es mayor de edad
+    for (let i = 0; i < 3; i++) {
+      let nombre = prompt("Nombre:");
+      let edad = parseInt(prompt("Edad:"));
+      let nacimiento = parseInt(prompt("Año nacimiento:"));
+      let hoy = new Date().getFullYear();
+      let edadCalc = hoy - nacimiento;
+      let mayor = edadCalc >= 18;
+
+      //crear el objeto persona
+      const persona = { nombre, edad, nacimiento, edadCalc, mayorDeEdad: mayor };
+      usuarios.push(persona);
+    }
+
+    let output = "";
+    let sumaEdad = 0;
+    let countMayores = 0;
+
+    //añado los mayores de edad al output
+    for (let u of usuarios) {
+      if (u.mayorDeEdad) {
+        output += `Hola, ${u.nombre}. Tienes ${u.edadCalc} años.<br>Eres mayor de edad: ${u.mayorDeEdad}<br><br>`;
+        sumaEdad += u.edadCalc;
+        countMayores++;
+      }
+    }
+
+    //añado la edad media de los mayores de edad al output
+    let media = countMayores > 0 ? (sumaEdad / countMayores).toFixed(1) : 0;
+    output += `Edad media mayores: ${media}`;
+
+    document.getElementById("output").innerHTML = output;
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+
+<body>
+    <script>
+        console.log("\n=== 8. ACCESO POR EDADES ===");
+        while (true) {
+            let edad = Number(prompt("Edad (0 para salir):"));
+            if (edad === 0) break;
+
+            if (edad < 13) console.log("Solo dibujos animados");
+            else if (edad <= 17) console.log("Películas juveniles");
+            else if (edad <= 65) console.log("Todo tipo de contenido");
+            else console.log("Películas recomendadas para seniors");
+        }
+    </script>
+</body>
+
+</html>

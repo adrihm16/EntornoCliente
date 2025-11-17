@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log("\n=== 6. CALCULADORA DE FECHAS ===");
+        let fechaNacStr = prompt("Fecha de nacimiento (dd/mm/aaaa):");
+        let [dia, mes, anio] = fechaNacStr.split("/").map(Number);
+        let nacimiento = new Date(anio, mes - 1, dia);
+        let hoy = new Date();
+
+        let edad = hoy.getFullYear() - nacimiento.getFullYear();
+        if (hoy.getMonth() < nacimiento.getMonth() ||
+            (hoy.getMonth() === nacimiento.getMonth() && hoy.getDate() < nacimiento.getDate())) {
+            edad--;
+        }
+        console.log("Edad actual:", edad, "años");
+
+        let proximoCumple = new Date(hoy.getFullYear(), nacimiento.getMonth(), nacimiento.getDate());
+        if (proximoCumple < hoy) proximoCumple.setFullYear(hoy.getFullYear() + 1);
+        let diasFaltan = proximoCumple - hoy / (1000 * 60 * 60 * 24);
+        console.log("Días para tu próximo cumpleaños:", diasFaltan);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+
+<body>
+    <script>
+        console.log("\n=== 11. PRESUPUESTO WEB ===");
+        let paginas = Number(prompt("Número de páginas (1 base + adicionales):"));
+        let seo = confirm("¿Incluye SEO? (Aceptar = sí)");
+        let mantenimiento = confirm("¿Incluye mantenimiento mensual? (Aceptar = sí)");
+
+        let totalPres = 500 + (paginas - 1) * 50 + (seo ? 300 : 0) + (mantenimiento ? 200 : 0);
+        console.log("Presupuesto total:", totalPres + "€");
+        if (totalPres > 1000) console.log("¡Precio alto! (más de 1000€)");
+    </script>
+</body>
+
+</html>

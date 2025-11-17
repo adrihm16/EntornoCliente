@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Condicional 2 - Salas</title>
+</head>
+<body>
+  <script>
+    let creditos = prompt("Créditos:");
+    let salas = "";
+    if (creditos >= 100) salas += "VIP ";
+    if (creditos >= 50) salas += "Premium ";
+    if (creditos >= 20) salas += "Estándar ";
+    alert(salas || "Ninguna");
+  </script>
+</body>
+</html>

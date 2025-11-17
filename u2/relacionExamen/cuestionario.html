@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+
+<body>
+    <script>
+        console.log("\n=== 10. CUESTIONARIO ===");
+        const preguntas = [
+            { preg: "¿Capital de Francia?", ops: ["Madrid", "París", "Roma"], correcta: 1 },
+            { preg: "¿2 + 2?", ops: ["3", "4", "22"], correcta: 1 },
+            { preg: "¿Color del caballo blanco de Santiago?", ops: ["Negro", "Blanco", "Marrón"], correcta: 1 }
+        ];
+
+        let aciertos = 0;
+        preguntas.forEach((p, i) => {
+            p.ops.forEach((op, idx) => console.log(`${idx + 1}. ${op}`));
+            let resp = Number(prompt(p.preg + " (número):")) - 1;
+            if (resp === p.correcta) {
+                console.log("¡Correcto!");
+                aciertos++;
+            } else {
+                console.log("Incorrecto");
+            }
+        });
+        let porcentaje = (aciertos / preguntas.length) * 100;
+        console.log(`Puntuación: ${aciertos}/${preguntas.length} (${porcentaje}%)`);
+    </script>
+</body>
+
+</html>

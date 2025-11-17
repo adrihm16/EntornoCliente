@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Condicional 4 - Menú</title>
+</head>
+
+<body>
+    <script>
+        let plato = prompt("Plato:");
+        let bebida = "";
+        if (plato.toLowerCase().includes("carne")) {
+            bebida = "Vino tinto";
+        } else if (plato.toLowerCase().includes("pescado")) {
+            bebida = "Vino blanco";
+        } else if (plato.toLowerCase().includes("pasta")) {
+            bebida = "Agua";
+        } else {
+            bebida = "Cerveza";
+        }
+        alert(bebida);
+    </script>
+</body>
+</html>

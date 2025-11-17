@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Array 5 - Productos >20</title>
+</head>
+<body>
+  <script>
+    let productos = [
+      {nombre: "lápiz", precio: 1},
+      {nombre: "cuaderno", precio: 25},
+      {nombre: "bolígrafo", precio: 2}
+    ];
+    let caros = productos.filter(p => p.precio > 20).map(p => p.nombre);
+    console.log(caros);
+  </script>
+</body>
+</html>

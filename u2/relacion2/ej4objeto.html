@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Objeto 4 - Coches negros</title>
+</head>
+<body>
+  <script>
+    let coches = [
+      {marca: "Seat", color: "rojo"},
+      {marca: "BMW", color: "negro"},
+      {marca: "Audi", color: "negro"}
+    ];
+    coches.filter(c => c.color === "negro").forEach(c => console.log(c.marca));
+  </script>
+</body>
+</html>

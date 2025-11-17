@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+
+<body>
+    <script>
+        console.log("\n=== 7. PUNTUACIONES VIDEOJUEGO ===");
+        let jugadores = [];
+        for (let i = 0; i < 5; i++) {
+            let nom = prompt(`Jugador ${i + 1} - Nombre:`);
+            let punt = Number(prompt(`Jugador ${i + 1} - Puntuación:`));
+            jugadores.push({ nombre: nom, puntuacion: punt });
+        }
+
+        let mayor = jugadores.reduce((max, j) => j.puntuacion > max.puntuacion ? j : max);
+        console.log("Mejor jugador:", mayor.nombre, "con", mayor.puntuacion, "puntos");
+
+        let promedio = jugadores.reduce((sum, j) => sum + j.puntuacion, 0) / jugadores.length;
+        console.log("Promedio de puntuaciones:", promedio.toFixed(2));
+
+        let nombresOrdenados = jugadores.map(j => j.nombre).sort();
+        console.log("Nombres ordenados:", nombresOrdenados.join(", "));
+
+    </script>
+</body>
+
+</html>

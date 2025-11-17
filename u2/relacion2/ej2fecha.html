@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Fecha 2 - Día semana</title>
+</head>
+<body>
+  <script>
+    let fecha = prompt("Fecha (YYYY-MM-DD):");
+    let dia = new Date(fecha).getDay();
+    let dias = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+    alert(dias[dia]);
+  </script>
+</body>
+</html>

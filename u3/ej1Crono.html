@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cronómetro</title>
+</head>
+<body>
+    <h1>Cronómetro</h1>
+    <p id="tiempo">0</p>
+
+    <script>
+        let segundos = 0;
+        window.onload = function () {
+            setInterval(crono, 1000);
+        };
+
+        function crono() {
+            segundos++;
+            document.getElementById("tiempo").textContent = segundos;
+        }
+    </script>
+</body>
+</html>

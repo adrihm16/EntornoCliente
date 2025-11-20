@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej3PArpadeante</title>
+</head>
+<body>
+    <script>
+        /*
+        3. Texto parpadeante
+● Toma un párrafo.
+● Cada 500 ms alterna entre visible / oculto o cambia de
+color.
+● Usa setInterval() para hacer el cambio.
+        */
+       let parrafo = document.createElement("p");
+       parrafo.textContent = "Parrafo";
+       document.body.appendChild(parrafo);
+       let intervalo = setInterval(() => {
+           parrafo.style.display = parrafo.style.display === "none" ? "block" : "none";
+       }, 500);
+    </script>
+</body>
+</html>

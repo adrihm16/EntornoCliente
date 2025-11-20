@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ej2Alerta</title>
+</head>
+<body>
+<script>
+    function temporizador() {
+        var temporizador = setTimeout(alerta, 3000)
+    }
+    function alerta() {
+        alert("Han pasado 3 segundos");
+    }
+    function cancelar() {
+        clearTimeout(temporizador);
+    }
+</script>
+    <button onclick="temporizador()">3 segundos</button>
+    <button onclick="cancelar()">cancelar</button>
+</body>
+</html>

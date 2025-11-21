@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>7. Reloj digital</title>
+    <style>
+        body { font-family: Verdana, Geneva, Tahoma, sans-serif, 'Arial Narrow', Arial, sans-serif; text-align: center; margin: 150px; font-size: 5em; background: #000; color: #0f0; }
+    </style>
+</head>
+<body>
+    <div id="reloj">00:00:00</div>
+
+    <script>
+        function actualizarReloj() {
+            const ahora = new Date();
+            const hh = String(ahora.getHours()).padStart(2, '0');
+            const mm = String(ahora.getMinutes()).padStart(2, '0');
+            const ss = String(ahora.getSeconds()).padStart(2, '0');
+            document.getElementById("reloj").textContent = `${hh}:${mm}:${ss}`;
+        }
+        actualizarReloj();
+        setInterval(actualizarReloj, 1000);
+    </script>
+</body>
+</html>

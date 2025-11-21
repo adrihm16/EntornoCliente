@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>ej6Imagenes</title>
+</head>
+<body>
+    <h1>Galería rotativa</h1>
+    <img id="banner" src="https://picsum.photos/800/400?random=1" alt="Banner">
+    <br>
+    <button onclick="pausar()">Pausar</button>
+    <button onclick="reanudar()">Reanudar</button>
+    <script>
+        const imagenes = [
+            "https://picsum.photos/800/400?random=1",
+            "https://picsum.photos/800/400?random=2",
+            "https://picsum.photos/800/400?random=3",
+            "https://picsum.photos/800/400?random=4"
+        ];
+        let indice = 0;
+        let intervalo;
+
+        function cambiarImagen() {
+            indice = (indice + 1) % imagenes.length;
+            document.getElementById("banner").src = imagenes[indice];
+        }
+
+        function pausar() {
+            clearInterval(intervalo);
+        }
+
+        function reanudar() {
+            clearInterval(intervalo);
+            intervalo = setInterval(cambiarImagen, 2000);
+        }
+
+        // Iniciar automáticamente
+        intervalo = setInterval(cambiarImagen, 2000);
+    </script>
+</body>
+</html>

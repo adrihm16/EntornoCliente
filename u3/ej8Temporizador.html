@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>8. Temporizador con retardo múltiple</title>
+</head>
+<body>
+    <h1>¡Preparados, listos...!</h1>
+    <div id="mensaje"></div>
+    <button onclick="iniciarSecuencia()">Iniciar</button>
+
+    <script>
+        function iniciarSecuencia() {
+            document.getElementById("mensaje").textContent = "";
+            
+            setTimeout(() => {
+                document.getElementById("mensaje").textContent = "Preparados...";
+            }, 2000);
+
+            setTimeout(() => {
+                document.getElementById("mensaje").textContent = "Listos...";
+            }, 4000);
+
+            setTimeout(() => {
+                document.getElementById("mensaje").textContent = "¡YA!";
+            }, 6000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ej4Temporizaodr</title>
+</head>
+<body>
+    <h1>Temporizador regresivo</h1>
+    <input type="number" id="segundos" placeholder="Segundos" min="1">
+    <button onclick="iniciar()">Iniciar</button>
+    <div id="tiempo"></div>
+
+    <script>
+        let intervalo;
+        function iniciar() {
+            clearInterval(intervalo);
+            let secs = parseInt(document.getElementById("segundos").value);
+            if (isNaN(secs) || secs <= 0) {
+                alert("Introduce un número válido de segundos");
+                return;
+            }
+            document.getElementById("tiempo").textContent = secs;
+
+            intervalo = setInterval(() => {
+                secs--;
+                document.getElementById("tiempo").textContent = secs;
+                if (secs <= 0) {
+                    clearInterval(intervalo);
+                    document.getElementById("tiempo").innerHTML = "¡Tiempo agotado!";
+                    const audio = new Audio("https://www.soundjay.com/misc/sounds/bell-ringing-01.mp3");
+                    audio.play().catch(() => console.log("Sonido bloqueado (interacción requerida)"));
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html

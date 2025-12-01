@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Indices</title>
+  </head>
+  <body>
+    <script>
+      const alumnos = [
+        { id: 1, nombre: "Ana" },
+        { id: 2, nombre: "Pedro" },
+        { id: 3, nombre: "Lucía" },
+      ];
+
+      const alumno = alumnos.find((a) => a.id === 2);
+      console.log(alumno);
+
+      const pos = alumnos.findIndex((a) => a.id === 2);
+      console.log(pos);
+
+      const alumnoFinal = alumnos.findLast((a) => a.id === 2);
+      console.log(alumnoFinal);
+    </script>
+  </body>
+</html>

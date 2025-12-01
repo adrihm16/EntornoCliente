@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenar con un criterio</title>
+</head>
+<body>
+    <script>
+        let lista = [10, 2, 4, 6 ,8 ,1,3,44, 21]
+        console.log(lista);
+        lista.sort();
+        console.log(lista);
+        lista.sort((a, b) => a - b);
+        console.log(lista);
+        let copia = lista.toSorted((a, b) => a - b);
+        console.log(copia);
+        
+    </script>
+</body>
+</html>

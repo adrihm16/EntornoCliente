@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mapeando</title>
+  </head>
+  <body>
+    <script>
+      const nombres = ["ana", "JUAN", "Pepe"];
+
+      const minusculas = nombres.map((n) => n.toLowerCase());
+
+      const mayusculas = nombres.map((n) => n.toUpperCase());
+
+      const capitalizados = nombres.map(
+        (n) => n.charAt(0).toUpperCase() + n.slice(1).toLowerCase()
+      );
+
+      console.log(minusculas);
+      console.log(mayusculas);
+      console.log(capitalizados);
+    </script>
+  </body>
+</html>

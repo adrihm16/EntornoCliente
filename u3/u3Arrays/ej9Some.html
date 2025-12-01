@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Some y Every</title>
+  </head>
+  <body>
+    <script>
+      const notas = [5, 8, 4, 7, 9];
+      const todosAprobaron = notas.every((n) => n >= 5);
+
+      const haySobresaliente = notas.some((n) => n >= 9);
+
+      const hayMenorDe3 = notas.some((n) => n < 3);
+
+      console.log(todosAprobaron);
+      console.log(haySobresaliente);
+      console.log(hayMenorDe3);
+    </script>
+  </body>
+</html>

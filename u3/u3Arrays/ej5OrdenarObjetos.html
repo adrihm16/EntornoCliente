@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Ordenar array de objetos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      let productos = [
+        { nombre: "Teclado", precio: 25 },
+        { nombre: "Monitor", precio: 180 },
+        { nombre: "Ratón", precio: 15 },
+      ];
+
+      
+      console.log(productos.sort((a,b)=> a.precio - b.precio));
+      console.log( productos.sort((a,b)=> a.nombre.localeCompare(b.nombre)));
+      let copia = productos.toSorted((a,b)=> a.nombre.localeCompare(b.nombre));
+      console.log(copia);
+      
+    </script>
+  </body>
+</html>

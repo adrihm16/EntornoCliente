@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>filtrar</title>
+  </head>
+  <body>
+    <script>
+      const edades = [12, 25, 18, 40, 17];
+
+      const mayores = edades.filter((e) => e >= 18);
+
+      const entre18y30 = edades.filter((e) => e >= 18 && e <= 30);
+
+      const pares = edades.filter((e) => e % 2 === 0);
+
+      console.log(mayores);
+      console.log(entre18y30);
+      console.log(pares);
+    </script>
+  </body>
+</html>

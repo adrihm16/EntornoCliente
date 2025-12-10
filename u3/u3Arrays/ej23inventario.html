@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 23: Inventario</title>
+</head>
+<body>
+    <h1>Ejercicio 23: Inventario Completo</h1>
+    <script>
+        const inventario = [
+            { id: 1, nombre: "Mesa", cat: "Muebles", precio: 100 },
+            { id: 2, nombre: "Silla", cat: "Muebles", precio: 50 },
+            { id: 3, nombre: "Lámpara", cat: "Iluminación", precio: 30 }
+        ];
+
+        // 1. Set Categorías
+        const categorias = new Set(inventario.map(i => i.cat));
+        console.log("Categorías:", [...categorias]);
+
+        // 2. Map Categoria -> Productos
+        const catMap = new Map();
+        categorias.forEach(c => {
+            catMap.set(c, inventario.filter(i => i.cat === c));
+        });
+        console.log("Mapa Categorías:", catMap);
+
+        // 3. Filtros y Sort
+        const caros = inventario.filter(i => i.precio > 40);
+        
+        // toSorted (Moderno) o sort con copia
+        const ordenadosNombre = [...inventario].sort((a,b) => a.nombre.localeCompare(b.nombre));
+        
+        console.log("Caros (>40):", caros);
+        console.log("Ordenados por nombre:", ordenadosNombre);
+
+        // 4. Find
+        console.log("Buscar 'Mesa':", inventario.find(i => i.nombre === "Mesa"));
+    </script>
+</body>
+</html>

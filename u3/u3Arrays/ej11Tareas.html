@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 11: CRUD Arrays</title>
+</head>
+<body>
+    <h1>Ejercicio 11: CRUD de Tareas</h1>
+    <p>Abre la consola (F12) para ver las operaciones.</p>
+
+    <script>
+        console.log("--- INICIO EJERCICIO 11 ---");
+
+        let tareas = [
+            { id: 1, texto: "Comprar leche", completada: false },
+            { id: 2, texto: "Estudiar JS", completada: true }
+        ];
+
+        // 1. Listar
+        const listar = () => console.table(tareas);
+
+        // 2. Añadir
+        const anadir = (texto) => {
+            const id = tareas.length ? Math.max(...tareas.map(t => t.id)) + 1 : 1;
+            tareas.push({ id, texto, completada: false });
+            console.log(`Añadida: ${texto}`);
+        };
+
+        // 3. Buscar
+        const buscar = (txt) => tareas.find(t => t.texto.toLowerCase().includes(txt.toLowerCase()));
+
+        // 4. Marcar completada
+        const completar = (id) => {
+            const index = tareas.findIndex(t => t.id === id);
+            if(index !== -1) {
+                tareas[index].completada = true;
+                console.log(`Tarea ${id} completada.`);
+            }
+        };
+
+        // 5. Filtrar
+        const filtrar = (estado) => tareas.filter(t => t.completada === estado);
+
+        // Pruebas automáticas
+        listar();
+        anadir("Ir al gimnasio");
+        completar(1);
+        console.log("Busqueda 'gimnasio':", buscar("gimnasio"));
+        console.log("Pendientes:", filtrar(false));
+        listar();
+    </script>
+</body>
+</html>

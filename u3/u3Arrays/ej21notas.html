@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 21: Notas</title>
+</head>
+<body>
+    <h1>Ejercicio 21: Sistema de Notas</h1>
+    <script>
+        console.log("--- NOTAS ---");
+        const clase = [
+            { alumno: "Ana", notas: [8, 9, 10] },
+            { alumno: "Luis", notas: [4, 3, 5] },
+            { alumno: "Maria", notas: [6, 6, 6] }
+        ];
+
+        // 1. Media (Map)
+        const conMedias = clase.map(al => {
+            const media = al.notas.reduce((a,b) => a+b, 0) / al.notas.length;
+            return { ...al, media: parseFloat(media.toFixed(2)) };
+        });
+        console.table(conMedias);
+
+        // 2. Aprobados (Filter)
+        const aprobados = conMedias.filter(al => al.media >= 5);
+        console.log("Aprobados:", aprobados);
+
+        // 3. Suspenso grave (Some)
+        const suspensoGrave = conMedias.some(al => al.media < 4);
+        console.log("¿Hay suspenso grave (<4)?", suspensoGrave);
+
+        // 4. Todos aprueban? (Every)
+        const exitoTotal = conMedias.every(al => al.media >= 5);
+        console.log("¿Todos aprobados?", exitoTotal);
+    </script>
+</body>
+</html>

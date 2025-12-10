@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 24: Unicos</title>
+</head>
+<body>
+    <h1>Ejercicio 24: Función valores_unicos</h1>
+    <script>
+        const datos = [1, 2, 3, 1, 2, 5];
+
+        // Versión A: Set
+        function unicosConSet(arr) {
+            return [...new Set(arr)];
+        }
+
+        // Versión B: Filter
+        function unicosManual(arr) {
+            return arr.filter((item, index) => arr.indexOf(item) === index);
+        }
+
+        console.log("Original:", datos);
+        console.log("Con Set:", unicosConSet(datos));
+        console.log("Con Filter:", unicosManual(datos));
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 25: Proyecto Final</title>
+    <style>body { background: #e0f7fa; padding: 20px; font-family: monospace; }</style>
+</head>
+<body>
+    <h1>Ejercicio 25: Lista de Estudiantes (Final)</h1>
+
+    <script>
+        const rawData = [
+            { id: 1, nombre: "Juan Perez" },
+            { id: 2, nombre: "Ana Lopez" },
+            { id: 1, nombre: "Juan Perez" }, // Duplicado
+            { id: 3, nombre: "Beatriz Aranda" }
+        ];
+
+        console.log("--- 1. Datos Originales ---", rawData);
+
+        // A. Eliminar duplicados (por ID) usando Map
+        const mapUnicos = new Map();
+        rawData.forEach(item => {
+            if(!mapUnicos.has(item.id)) mapUnicos.set(item.id, item);
+        });
+        const estudiantes = [...mapUnicos.values()];
+        console.log("--- 2. Sin Duplicados ---", estudiantes);
+
+        // B. Ordenar por Apellido (asumiendo "Nombre Apellido")
+        estudiantes.sort((a, b) => {
+            const apellidoA = a.nombre.split(" ")[1];
+            const apellidoB = b.nombre.split(" ")[1];
+            return apellidoA.localeCompare(apellidoB);
+        });
+        console.log("--- 3. Ordenados por Apellido ---", estudiantes);
+
+        // C. Map ID -> Alumno (para búsquedas rápidas)
+        const directorio = new Map(estudiantes.map(e => [e.id, e]));
+        
+        // D. Búsquedas
+        console.log("--- 4. Buscar ID 2 ---", directorio.get(2));
+        
+        const buscarNombre = (txt) => estudiantes.filter(e => e.nombre.includes(txt));
+        console.log("--- 5. Buscar 'Bea' ---", buscarNombre("Bea"));
+
+        // E. Iniciales únicas
+        const iniciales = new Set(estudiantes.map(e => e.nombre[0]));
+        console.log("--- 6. Iniciales únicas ---", [...iniciales]);
+
+    </script>
+</body>
+</html>

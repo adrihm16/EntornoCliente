@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicios 12-16: Sets</title>
+    <style>body { font-family: sans-serif; padding: 20px; }</style>
+</head>
+<body>
+    <h1>Ejercicios del 12 al 16 (Sets)</h1>
+    <p>Mira la consola para ver cada apartado separado.</p>
+
+    <script>
+        console.group("12. Set Básico");
+        const set1 = new Set();
+        set1.add(1).add(2).add(1); // El 1 repetido se ignora
+        console.log("Size:", set1.size); 
+        console.log("Has 2?:", set1.has(2));
+        set1.delete(2);
+        console.log("Tras borrar 2:", set1);
+        set1.clear();
+        console.groupEnd();
+
+        console.group("13. Set a Array");
+        const setLetras = new Set(["A", "B", "C"]);
+        const arrLetras = [...setLetras];
+        const cloneLetras = structuredClone([...setLetras]);
+        console.log("Array:", arrLetras);
+        console.groupEnd();
+
+        console.group("14. Eliminar duplicados");
+        const nums = [1,2,2,3,4,4,5];
+        const unicos = [...new Set(nums)];
+        console.log("Original:", nums);
+        console.log("Limpio:", unicos);
+        console.groupEnd();
+
+        console.group("15. Operaciones Conjuntos");
+        const A = new Set([1,2,3,4,5]);
+        const B = new Set([4,5,6,7]);
+        
+        console.log("Unión:", [...new Set([...A, ...B])]);
+        console.log("Intersección:", [...A].filter(x => B.has(x)));
+        console.log("Diferencia (A-B):", [...A].filter(x => !B.has(x)));
+        console.groupEnd();
+
+        console.group("16. Anidados");
+        const setAnidado = new Set([5, "A", [1,2]]);
+        const copiaShallow = [...setAnidado]; 
+
+        console.log("Set con array:", setAnidado);
+        console.groupEnd();
+    </script>
+</body>
+</html>

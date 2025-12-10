@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 22: Analizador Texto</title>
+</head>
+<body>
+    <h1>Ejercicio 22: Analizador de Texto</h1>
+    <script>
+        const texto = "Hola mundo, hola a todo el mundo. El mundo es bello.";
+        
+        // 1. Array limpio
+        const palabras = texto.toLowerCase()
+            .replace(/[.,]/g, "")
+            .split(" ")
+            .filter(p => p !== "");
+        
+        console.log("Array:", palabras);
+
+        // 2. Set únicas
+        const unicas = new Set(palabras);
+        console.log("Palabras únicas:", unicas.size);
+        console.log([...unicas]);
+
+        // 3. Map conteo
+        const conteo = new Map();
+        palabras.forEach(p => {
+            conteo.set(p, (conteo.get(p) || 0) + 1);
+        });
+
+        console.log("Frecuencias:");
+        console.table([...conteo]);
+    </script>
+</body>
+</html>

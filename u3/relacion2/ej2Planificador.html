@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+     const actividades = [
+        {
+          nombre: "Sala del misterio",
+          tipo: "escape room",
+          fecha: "2026/01/04",
+        },
+        {
+          nombre: "kr24",
+          tipo: "karts",
+          fecha: "2026/01/05",
+        },
+        {
+          nombre: "Paintball Manolo",
+          tipo: "paintball",
+          fecha: "2026/01/08",
+        },
+        {
+          nombre: "Paintball Juanan",
+          tipo: "paintball",
+          fecha: "2026/02/08",
+        },
+        {
+          nombre: "karting Chiclana",
+          tipo: "karts",
+          fecha: "2027/01/05",
+        },
+        {
+          nombre: "Misterio del ocho",
+          tipo: "escape room",
+          fecha: "2026/03/04",
+        }
+      ];
+      function normalizarTexto(texto) {
+        texto = texto.trim().toLowerCase();
+        return texto;
+        console.log("Texto normalizado")
+      }
+      function filtrarPorTipo (tipoBuscado, actividades) {
+        let arrayBuscado = [];
+            for (const actividad of actividades) {
+                if (actividad.tipo == tipoBuscado) {
+                    arrayBuscado.push(actividad);
+                }
+            }
+            return arrayBuscado;
+            console.log("tipo filtrado");
+      }
+      function buscarActividad(palabra) {
+        for (const actividad of actividades) {
+                if (actividad.nombre.toLocaleLowerCase() == palabra.toLocaleLowerCase()) {
+                    
+                }
+            }
+      }
+
+    </script>
+  </body>
+</html>

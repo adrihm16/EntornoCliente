@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicios 17-20: Maps</title>
+</head>
+<body>
+    <h1>Ejercicios del 17 al 20 (Maps)</h1>
+    <script>
+        // --- Ejercicio 17 ---
+        console.group("17. Map Básico");
+        const map1 = new Map();
+        const objKey = {id:1};
+        map1.set("str", "valorString").set(10, "valorNum").set(objKey, "valorObj");
+        console.log("Get 10:", map1.get(10));
+        console.log("Size:", map1.size);
+        console.groupEnd();
+
+        // --- Ejercicio 18 ---
+        console.group("18. Map a Arrays");
+        const map2 = new Map([["a", 1], ["b", 2]]);
+        console.log("Pares:", [...map2]);
+        console.log("Claves:", [...map2.keys()]);
+        console.log("Valores:", [...map2.values()]);
+        console.groupEnd();
+
+        // --- Ejercicio 19 ---
+        console.group("19. Array a Map");
+        const pares = [[1,"uno"], [2,"dos"]];
+        const map3 = new Map(pares);
+        console.log(map3);
+        console.groupEnd();
+
+        // --- Ejercicio 20 ---
+        console.group("20. Map Producto");
+        const productos = new Map();
+        productos.set("A01", {nombre: "TV", precio: 200});
+        productos.set("A02", {nombre: "Radio", precio: 50});
+        
+        console.log("Existe A01?", productos.has("A01"));
+        console.log("Producto A01:", productos.get("A01"));
+        console.log("Todos los IDs:", [...productos.keys()]);
+        console.groupEnd();
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Sistema de bienvenida</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <script>
+        function establecerCookie(nombre, valor) {
+           const fecha = new Date();
+           fecha.setTime(fecha.getTime()+ (30 * 24 * 60 *60 * 1000));
+           let expires = "expires="+fecha.toUTCString();
+           let valorCodificado = encodeURIComponent(valor);
+           document.cookie = nombre + "=" + valorCodificado + ";" + expires + ";path=/";
+           console.log("Cookie creada: " + nombre + "=" + valorCodificado);
+        }
+        function obtenerCookie(nombre) {
+            let nombreBusqueda = nombre + "=";
+            let listaCookies = document.cookie.split(";");
+            for (let i = 0; i < listaCookies.length; i++) {
+                const cookie = listaCookies[i].trim();
+                if (cookie.startsWith(nombreBusqueda)) {
+                    return decodeURIComponent(c.substring(nombreBusqueda.length, c.length));
+                }
+            }
+            return "";
+        }
+        function comprobarCookie(nombre) {
+            let usuario = obtenerCookie(nombre);
+            if (usuario !== "") {
+                alert("Bienvenido de nuevo, " + usuario);
+            } else {
+                usuario = prompt("Por favor, introduce tu nombre:", "");
+                if (usuario != "" && usuario != null) {
+                    establecerCookie(nombre, usuario);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

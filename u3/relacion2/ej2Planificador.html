@@ -3,65 +3,167 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Planificador</title>
   </head>
   <body>
     <script>
-     const actividades = [
+      const actividades = [
         {
-          nombre: "Sala del misterio",
-          tipo: "escape room",
-          fecha: "2026/01/04",
+          nombre: 'Sala del misterio',
+          tipo: 'escape room',
+          fecha: '2026/01/04',
         },
         {
-          nombre: "kr24",
-          tipo: "karts",
-          fecha: "2026/01/05",
+          nombre: 'kr24',
+          tipo: 'karts',
+          fecha: '2026/01/05',
         },
         {
-          nombre: "Paintball Manolo",
-          tipo: "paintball",
-          fecha: "2026/01/08",
+          nombre: 'Paintball Manolo',
+          tipo: 'paintball',
+          fecha: '2026/01/08',
         },
         {
-          nombre: "Paintball Juanan",
-          tipo: "paintball",
-          fecha: "2026/02/08",
+          nombre: 'Paintball Juanan',
+          tipo: 'paintball',
+          fecha: '2026/02/08',
         },
         {
-          nombre: "karting Chiclana",
-          tipo: "karts",
-          fecha: "2027/01/05",
+          nombre: 'karting Chiclana',
+          tipo: 'karts',
+          fecha: '2027/01/05',
         },
         {
-          nombre: "Misterio del ocho",
-          tipo: "escape room",
-          fecha: "2026/03/04",
-        }
+          nombre: 'Misterio del ocho',
+          tipo: 'escape room',
+          fecha: '2026/03/04',
+        },
       ];
+
+      let participantesPorActividad = new Map([
+        ['kr24', 0],
+        ['Paintball Manolo', 0],
+        ['Paintball Juanan', 0],
+        ['karting Chiclana', 0],
+        ['Misterio del ocho', 0],
+      ]);
+
       function normalizarTexto(texto) {
-        texto = texto.trim().toLowerCase();
+        texto = texto.trim().toLocaleLowerCase();
         return texto;
-        console.log("Texto normalizado")
-      }
-      function filtrarPorTipo (tipoBuscado, actividades) {
-        let arrayBuscado = [];
-            for (const actividad of actividades) {
-                if (actividad.tipo == tipoBuscado) {
-                    arrayBuscado.push(actividad);
-                }
-            }
-            return arrayBuscado;
-            console.log("tipo filtrado");
-      }
-      function buscarActividad(palabra) {
-        for (const actividad of actividades) {
-                if (actividad.nombre.toLocaleLowerCase() == palabra.toLocaleLowerCase()) {
-                    
-                }
-            }
       }
 
+      function filtrarPorTipo(tipoBuscado, actividades) {
+        let arrayBuscado = [];
+        for (const actividad of actividades) {
+          if (normalizarTexto(actividad.tipo) == normalizarTexto(tipoBuscado)) {
+            arrayBuscado.push(actividad);
+          }
+        }
+        console.log('tipo filtrado correctamente');
+        return arrayBuscado;
+      }
+
+      function buscarActividad(palabra) {
+        let arrayBuscado = [];
+        for (const actividad of actividades) {
+          if (normalizarTexto(actividad.nombre) == normalizarTexto(palabra)) {
+            arrayBuscado.push(actividad);
+          }
+        }
+        console.log('Actividades buscadas correctamente');
+        return arrayBuscado;
+      }
+
+      function apuntarParticipantes(nombreActividad, cantidad) {
+        if (!isNaN(cantidad)) {
+          participantesPorActividad.forEach((participantesActuales, nombreDeLaActividad) => {
+            if (normalizarTexto(nombreDeLaActividad) == normalizarTexto(nombreActividad)) {
+              participantesPorActividad.set(nombreDeLaActividad, participantesActuales + cantidad);
+              console.log('La cantidad de participantes ha sido aumentada correctamente');
+            }
+          });
+        } else {
+          console.log('La cantidad de participantes debe ser un número');
+        }
+      }
+
+      function diasParaLaActividad(fechaStr) {
+        let fecha = new Date(fechaStr);
+        let fechaAct = new Date();
+        diasRestantes = ((fechaAct - fecha) / 1000 / 60 / 60 / 24).toFixed(0);
+        console.log('Dias restantes calculados correctamente');
+        return diasRestantes;
+      }
+
+      function guardarActividadesLocalStorage(actividades) {
+        try {
+          const actividadesJSON = JSON.stringify(actividades);
+          localStorage.setItem('actividades', actividadesJSON);
+          console.log('Actividades guardadas correctamente en localStorage.');
+        } catch (error) {
+          console.error('Error al guardar actividades en localStorage:', error);
+        }
+      }
+      function guardarParticipantesSessionStorage(participantesMap) {
+        try {
+          const participantesArray = Array.from(participantesMap);
+          const participantesJSON = JSON.stringify(participantesArray);
+          sessionStorage.setItem('participantes', participantesJSON);
+          console.log('Participantes guardados correctamente en sessionStorage.');
+        } catch (error) {
+          console.error('Error al guardar participantes en sessionStorage:', error);
+        }
+      }
+
+      function crearCookieActividadFavorita(nombreActividad) {
+        if (!nombreActividad || typeof nombreActividad !== 'string') {
+          console.error('El nombre de la actividad debe ser una cadena válida.');
+          return;
+        }
+        const valorCookie = encodeURIComponent(nombreActividad.toUpperCase());
+        const diasExpiracion = 5;
+        const fechaExpiracion = new Date();
+        fechaExpiracion.setTime(fechaExpiracion.getTime() + diasExpiracion * 24 * 60 * 60 * 1000);
+        const expires = 'expires=' + fechaExpiracion.toUTCString();
+        document.cookie = `actividadFavorita=${valorCookie}; ${expires}; path=/; SameSite=Lax`;
+
+        console.log(`Cookie "actividadFavorita" creada para: ${nombreActividad}.`);
+      }
+
+      console.log('\n--- TEST 1: normalizarTexto ---');
+      const textoParaNormalizar = '  kArTing ChIclana  ';
+      const resultadoNormalizar = normalizarTexto(textoParaNormalizar);
+      console.log(`Resultado: '${resultadoNormalizar}'`);
+      // Salida esperada: 'karting chiclana'
+
+      console.log('\n--- TEST 2: filtrarPorTipo (karts) ---');
+      const tipoBuscado = 'karts';
+      const resultadoFiltrar = filtrarPorTipo(tipoBuscado, actividades);
+      console.log(`Resultado: ${resultadoFiltrar.length} actividades encontradas.`);
+      console.log('Actividades encontradas:', resultadoFiltrar);
+      // Salida esperada: 2 actividades (kr24, karting Chiclana)
+
+      console.log('\n--- TEST 3: buscarActividad (Paintball Manolo) ---');
+      const actividadBuscada = 'Paintball Manolo';
+      const resultadoBuscar = buscarActividad(actividadBuscada);
+      console.log(`Resultado: ${resultadoBuscar.length} actividad encontrada.`);
+      console.log('Actividad encontrada:', resultadoBuscar);
+      // Salida esperada: 1 actividad (Paintball Manolo)
+
+      console.log('\n--- TEST 4: apuntarParticipantes (Demostración de Bug) ---');
+      console.log('Estado inicial del Map:', participantesPorActividad);
+      const actividadApuntar = 'kr24';
+      const cantidadApuntar = 5;
+
+      apuntarParticipantes(actividadApuntar, cantidadApuntar);
+
+      console.log(`Estado final del Map después de intentar apuntar ${cantidadApuntar} a '${actividadApuntar}':`);
+      console.log(participantesPorActividad);
+      // Salida esperada: El Map se mantiene sin cambios debido a la lógica de comparación interna.
+
+      console.log('\n--- TEST 5: apuntarParticipantes (Con parámetro NO NUMÉRICO) ---');
+      apuntarParticipantes('kr24', 'cinco');
     </script>
   </body>
 </html>

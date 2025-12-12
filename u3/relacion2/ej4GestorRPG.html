@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestor RPG</title>
+  </head>
+  <body>
+    <script>
+      let objetos = [
+        {
+          nombre: "espada dorada",
+          tipo: "arma",
+          rareza: "epica",
+          fechaObtencion: "2025/11/30",
+        },
+        {
+          nombre: "espada de madera",
+          tipo: "arma",
+          rareza: "comun",
+          fechaObtencion: "2025/10/30",
+        },
+        {
+          nombre: "vendaje",
+          tipo: "consumible",
+          rareza: "comun",
+          fechaObtencion: "2025/11/24",
+        },
+        {
+          nombre: "mochila mediana",
+          tipo: "equipo",
+          rareza: "raro",
+          fechaObtencion: "2025/12/01",
+        },
+      ];
+
+      function crearObjeto(
+        nombreIntro,
+        tipoIntro,
+        rarezaIntro,
+        fechaObtencionIntro
+      ) {
+        nombreIntro = nombreIntro.toLocaleLowerCase().trim();
+        tipoIntro = tipoIntro.toLocaleLowerCase().trim();
+        rarezaIntro = rarezaIntro.toLocaleLowerCase().trim();
+        objetos.push({
+          nombre: nombreIntro,
+          tipo: tipoIntro,
+          rareza: rarezaIntro,
+          fechaObtencion: fechaObtencionIntro,
+        });
+      }
+
+      function guardarActividadesLocalStorage(objetos) {
+        try {
+          const objetosJSON = JSON.stringify(objetos);
+          localStorage.setItem("objetos", objetosJSON);
+          console.log("Objetos guardados correctamente en localStorage.");
+        } catch (error) {
+          console.error("Error al guardar objetos en localStorage:", error);
+        }
+      }
+
+      function contarObjetosPorTipo_IfElse(listaObjetos) {
+        const conteoPorTipo = new Map();
+        listaObjetos.forEach((objetoActual) => {
+          const tipo = objetoActual.tipo;
+          const cantidadExistente = conteoPorTipo.get(tipo);
+          if (cantidadExistente !== undefined) {
+            conteoPorTipo.set(tipo, cantidadExistente + 1);
+          } else {
+            conteoPorTipo.set(tipo, 1);
+          }
+        });
+        return conteoPorTipo;
+      }
+      function diasEnInventario(fechaString) {
+        let fecha = new Date(fechaStr);
+        let fechaAct = new Date();
+        let dias = ((fechaAct - fecha) / 1000 / 60 / 60 / 24).toFixed(0);
+        console.log("Días calculados correctamente");
+        return dias;
+      }
+
+      function establecerCookie(valor) {
+        const fecha = new Date();
+        fecha.setTime(fecha.getTime() + 2 * 24 * 60 * 60 * 1000);
+        let expires = "expires=" + fecha.toUTCString();
+        let valorCodificado = encodeURIComponent(valor.toUpperCase());
+        document.cookie =
+          "jugador=" + valorCodificado + ";" + expires + ";path=/";
+        console.log("Cookie creada: " + nombre + "=" + valorCodificado);
+      }
+    </script>
+  </body>
+</html>

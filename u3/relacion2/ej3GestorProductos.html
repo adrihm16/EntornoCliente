@@ -8,20 +8,32 @@
   <body>
     <script>
       let productos = [
-        { nombre: 'Teclado', precio: 20, categoria: 'perifericos' },
-        { nombre: 'Monitor', precio: 150, categoria: 'pantallas' },
-        { nombre: 'Ratón', precio: 15, categoria: 'perifericos' }, // Agregamos uno para mejores ejemplos
-        { nombre: 'Webcam', precio: 60, categoria: 'perifericos' },
+        { nombre: "Teclado", precio: 20, categoria: "perifericos" },
+        { nombre: "Monitor", precio: 150, categoria: "pantallas" },
+        { nombre: "Ratón", precio: 15, categoria: "perifericos" },
+        { nombre: "Webcam", precio: 60, categoria: "perifericos" },
       ];
       let nombres = productos.map((producto) => producto.nombre);
-      let productoMasCincuenta = productos.filter((producto) => producto.precio > 50);
-      let primerMasCincuenta = productos.find((producto) => producto.precio > 50);
-      let indicePrimerMasCincuenta = productos.findIndex((producto) => producto.precio > 50);
-      let algunProductoMasCincuenta = productos.some((producto) => producto.precio > 50);
-      let everyProductoMasCincuenta = productos.every((producto) => producto.precio > 50);
+      let productoMasCincuenta = productos.filter(
+        (producto) => producto.precio > 50
+      );
+      let primerMasCincuenta = productos.find(
+        (producto) => producto.precio > 50
+      );
+      let indicePrimerMasCincuenta = productos.findIndex(
+        (producto) => producto.precio > 50
+      );
+      let algunProductoMasCincuenta = productos.some(
+        (producto) => producto.precio > 50
+      );
+      let everyProductoMasCincuenta = productos.every(
+        (producto) => producto.precio > 50
+      );
       //Ordenar productos por rpecio
       productos.sort((a, b) => a.precio - b.precio);
-      const productosOrdenados = productos.toSorted((a, b) => a.precio - b.precio);
+      const productosOrdenados = productos.toSorted(
+        (a, b) => a.precio - b.precio
+      );
       productos.reverse();
 
       const soloCategorias = productos.map((producto) => producto.categoria);
@@ -32,7 +44,7 @@
       productos.forEach((producto) => {
         mapPrecios.set(producto.nombre, producto.precio);
       });
-      console.log('Categorías únicas encontradas:');
+      console.log("Categorías únicas encontradas:");
       for (const categoria of categoriasUnicasSet) {
         console.log(`- ${categoria}`);
       }
@@ -40,7 +52,7 @@
       // Mostrar el número de categorías
       console.log(`Número total de categorías: ${categoriasUnicasSet.size}`);
 
-      console.log('Precio productos: ');
+      console.log("Precio productos: ");
       mapPrecios.forEach((precio, nombre) => {
         console.log(`Producto: ${nombre} -> Precio: ${precio}€`);
       });

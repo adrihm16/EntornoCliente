@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gestor De Viajes</title>
+  </head>
+  <body>
+    <script>
+      let destinos = [
+        {
+          ciudad: 'París',
+          pais: 'Francia',
+          fechaObjetivo: '2026/02/21',
+          presupuesto: 1000,
+        },
+        {
+          ciudad: 'Barcelona',
+          pais: 'Espana',
+          fechaObjetivo: '2026/01/30',
+          presupuesto: 600,
+        },
+        {
+          ciudad: 'Malaga',
+          pais: 'Espana',
+          fechaObjetivo: '2025/12/21',
+          presupuesto: 200,
+        },
+        {
+          ciudad: 'Bangkok',
+          pais: 'Tailandia',
+          fechaObjetivo: '2026/06/21',
+          presupuesto: 900,
+        },
+      ];
+      function normalizarTexto(cadena) {
+        return cadena.trim().toLocaleLowerCase();
+      }
+      let paisesVisitados = new Map();
+
+      function diasRestantes(fecha) {
+        let fechaObjetivo = new Date(fecha);
+        let fechaAct = new Date();
+        let diasRestantes = ((fechaObjetivo.getDate() - fechaAct.getDate()) / 1000 / 60 / 60 / 24).toFixed(0);
+        return diasRestantes;
+      }
+
+      function guardarLocalStorage() {
+        localStorage.setItem('destinos', JSON.stringify(destinos));
+      }
+
+      function establecerCookie(input) {
+        let fecha = new Date();
+        fecha.setDate(fecha.getDate() + 7);
+        let expires = 'expires=' + fecha.toUTCString();
+        let valorCodificado = encodeURIComponent(input);
+        document.cookie = 'preferinciasViaje=' + valorCodificado + ';' + expires + ';path=/';
+        return fecha;
+      }
+
+      function filtrarPorPais(pais) {
+        return destinos.filter((destino) => destino.pais.toLocaleLowerCase() == pais.toLocaleLowerCase());
+      }
+    </script>
+  </body>
+</html>

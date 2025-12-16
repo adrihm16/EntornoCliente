@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compra-Venta Artículos</title>
+  </head>
+  <body>
+    <script>
+      let productos = [
+        {
+          id: 1,
+          titulo: 'Mando tv',
+          precio: 8.99,
+          categoria: "perifericos",
+          fechaPublicacion: '2025/10/20',
+        },
+        {
+          id: 2,
+          titulo: 'Mando ps5',
+          precio: 68.99,
+          categoria: "perifericos",
+          fechaPublicacion: '2022/10/20',
+        },
+        {
+          id: 3,
+          titulo: 'Tv LG',
+          precio: 499.99,
+          categoria: "televisiones",
+          fechaPublicacion: '2025/08/26',
+        },
+        {
+          id: 4,
+          titulo: 'playstation 5 slim',
+          precio: 349.99,
+          categoria: "consola",
+          fechaPublicacion: '2023/10/23',
+        },
+      ];
+      let ventas = new Map();
+      productos.forEach(producto => {
+          ventas.set(producto.id, 0);
+      });
+      function filtrarPorCategoria(categoriaIntr) {
+        categoriaIntr = categoriaIntr.trim();
+        return productos.filter((producto) => producto.categoria.toLocaleLowerCase == categoriaIntr.toLocaleLowerCase);
+      }
+      function buscarProducto(palabra) {
+        palabra = palabra.toLocaleLowerCase().trim();
+        return productos.filter(producto => {
+            producto.categoria.toLocaleLowerCase().trim().includes(palabra);
+        })
+      }
+      function RegistrarVenta(idIntr) {
+          if (ventas.has(idIntr)) {
+              let cantidadActual = ventas.get(idIntr);
+              let nuevaCantidad = cantidadActual + 1;
+              ventas.set(idIntr, nuevaCantidad);
+              console.log(`Venta registrada para ID ${idIntr}. Nueva cantidad: ${nuevaCantidad}`);
+              return true;
+          } else {
+              //Si el producto no existe, inicializarlo a 1
+              ventas.set(idIntr, 1);
+              console.log(`Nuevo producto registrado y primera venta para ID ${idIntr}.`);
+              return true;
+          }
+      }
+      //Lo he hecho con ventas pq no se a que se refería publicaciones en el enunciado
+      function GuardarSessionStorage() {
+        let arrayVentas = [...ventas];
+        sessionStorage.setItem("ventas", JSON.stringify(arrayVentas));
+      }
+      function establecerCookie(nombre) {
+          if (nombre == '' || nombre == null) {
+              console.log("Nombre no válido")
+          } else {
+              let fecha = new Date();
+              fecha.setDate(fecha.getDate() + (24*60*60*1000));
+              let expires = "expires="+fecha.toUTCString();
+              let nombreEncriptado = encodeURIComponent(nombre.trim().toLocaleLowerCase());
+              document.cookie = "usuarioCompras="+nombreEncriptado+";"+expires+";path=/";
+          }
+      }
+    </script>
+  </body>
+</html>
